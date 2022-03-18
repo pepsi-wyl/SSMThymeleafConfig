@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/style.css}"/>
+    <script>
+        $(function () {
+            $(".txtb input").on("focus", function () {
+                $(this).addClass("focus");
+            });
+            $(".txtb input").on("blur", function () {
+                if ($(this).val() == "")
+                    $(this).removeClass("focus");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<form th:action="@{/user/register}" method="post" class="login-form">
+    <h1>Sign up</h1>
+    <div class="txtb">
+        <input type="text" id="userName" name="userName" placeholder="请输入userName:" required>
+    </div>
+    <div class="txtb">
+        <input type="password" id="password" name="password" placeholder="请输入password:" required>
+    </div>
+    <input type="submit" value="submit" class="logbtn">
+    <input type="reset" value="reset" class="logbtn"/>
+    <div class="bottom-text">
+        <a th:href="@{/toLogin}">Log In</a><br/>
+        © 2021 Designed by @wyl
+    </div>
+</form>
+
+</body>
+</html>
