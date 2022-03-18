@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.BookMapper">
+
+    <!--查询所有书-->
+    <select id="getBookList" resultType="books">
+        select *
+        from ssmbuild.books;
+    </select>
+
+    <!--查询一本书ByID-->
+    <select id="getBookByID" resultType="books">
+        select *
+        from ssmbuild.books
+        where bookID = #{bookID};
+    </select>
+
+    <!--查询书ByName-->
+    <select id="getBookByBookName" parameterType="string" resultType="books">
+        select *
+        from ssmbuild.books
+        where bookName like concat('%', #{bookName}, '%');
+    </select>
+
+    <!--增加一本书-->
+    <insert id="addBook" parameterType="books">
+        insert into ssmbuild.books(bookName, bookCounts, detail)
+            value (#{bookName}, #{bookCounts}, #{detail});
+    </insert>
+
+    <!--删除一本书ByID-->
+    <delete id="delBookByID">
+        delete
+        from ssmbuild.books
+        where bookID = #{bookID};
+    </delete>
+
+    <!--更新一本书-->
+    <update id="updateBookByID" parameterType="books">
+        update ssmbuild.books
+        <set>
+            <if test="bookName!=null">bookName=#{bookName},</if>
+            <if test="bookCounts!=null">bookCounts=#{bookCounts},</if>
+            <if test="detail!=null">detail=#{detail},</if>
+        </set>
+        where bookID = #{bookID};
+    </update>
+
+</mapper>
