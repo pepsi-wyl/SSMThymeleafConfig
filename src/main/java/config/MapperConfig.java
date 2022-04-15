@@ -22,7 +22,7 @@ public class MapperConfig {
 
     private final String dbUrl = "jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&rewriteBatchedStatements=true";
     private final String username = "root";
-    private final String password = "bsy8023.00";
+    private final String password = "xxxxxx";
     private final String driverClassName = "com.mysql.cj.jdbc.Driver";
 
     // 配置数据源
